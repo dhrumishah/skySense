@@ -15,6 +15,7 @@ import {
   BsWater,
   BsThermometer,
   BsWind,
+  BsSnow,
 } from "react-icons/bs";
 import { TbTemperatureCelsius } from "react-icons/tb";
 import { ImSpinner8 } from "react-icons/im";
@@ -42,7 +43,31 @@ const App = () => {
       </div>
     );
   }
-  return <div>react app</div>;
+
+  let icon;
+  console.log(data.weather[0].main);
+
+  switch (data.weather[0].main) {
+    case "Clouds":
+      icon = <IoMdCloudy />;
+      break;
+    case "Haze":
+      icon = <BsCloudHaze2Fill />;
+      break;
+    case "Rain":
+      icon = <IoMdRainy />;
+      break;
+    case "Drizzle":
+      icon = <BsCloudDrizzleFill />;
+      break;
+    case "Snow":
+      icon = <IoMdSnow />;
+      break;
+    case "Thunderstorm":
+      icon = <IoMdThunderstorm />;
+      break;
+  }
+  return <div className="text-6xl">{icon}</div>;
 };
 
 export default App;
